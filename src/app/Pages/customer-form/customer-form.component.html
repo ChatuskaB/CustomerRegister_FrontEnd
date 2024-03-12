@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col">
+        <form id="customerForm" [formGroup]="customer" class="card shadow p-3 mb-5 bg-white rounded mx-auto" (ngSubmit)="SaveFormData()" style="max-width: 900px; max-height: 900px;">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4 p-3" style="background-color: #007bff; color: #fff;">Add Customer</h5>
+            
+            <div class="form-group row mb-3">
+              <label for="CusName" class="col-sm-2 col-form-label label-bg">Customer Name:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="CusName" formControlName="CusName">
+              </div>
+            </div>
+                    
+            <div class="form-group row mb-3">
+              <label for="CusPhoneNumber" class="col-sm-2 col-form-label label-bg">Phone Number:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="CusPhoneNumber" formControlName="CusPhoneNumber">
+              </div>
+            </div>
+                    
+            <div class="form-group row mb-3">
+              <label for="CusEmail" class="col-sm-2 col-form-label label-bg">Email:</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="CusEmail" formControlName="CusEmail">
+              </div>
+            </div>
+                      
+            <div class="form-group row mb-3">
+              <label for="CusAddress" class="col-sm-2 col-form-label label-bg">Address:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="CusAddress" formControlName="CusAddress">
+              </div>
+            </div>
+                 
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary btn-lg mr-md-2 mb-2 mb-md-0">
+                  <i class="fas fa-check"></i> Save
+                </button>
+                <span class="button-space"></span>
+                <button type="button" class="btn btn-outline-primary btn-lg" (click)="Cancel()">
+                  <i class="fas fa-times"></i> Cancel
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </form>
+
+
+
+
+
+
+
+        <div class="card mt-4 shadow p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+              <h5 class="card-title text-center mb-4 p-3" style="background-color: #007bff; color: #fff;">Registered Customers</h5>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th hidden="hidden">Customer Id</th>
+                        <th>Customer Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Loop through tasks and display in table rows -->
+                      <tr *ngFor="let customer of customers">
+                        <td hidden="hidden">{{ customer.customerId }}</td>
+                        <td>{{ customer.cusName }}</td>
+                        <td>{{ customer.cusPhoneNumber }}</td>
+                        <td>{{ customer.cusEmail }}</td>
+                        <td>{{ customer.cusAddress }}</td>
+                        <td>
+                          <!-- Edit Button -->
+                          <button type="button" class="btn btn-sm btn-primary" (click)="EditCustomer(customer.customerId)">Edit</button>
+                          <!-- Delete Button -->
+                          <button type="button" class="btn btn-sm btn-danger" (click)="DeleteCustomer(customer.customerId)">Delete</button>
+    
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
